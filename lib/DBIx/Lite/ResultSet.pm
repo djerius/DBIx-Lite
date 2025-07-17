@@ -101,7 +101,7 @@ sub with {
     my %with = @_;
     
     croak "with() requires a hash of scalarrefs or refs to arrayrefs"
-        if grep { !ref($_) eq 'SCALAR' } values %with;
+        if grep { ref($_) ne 'SCALAR' } values %with;
     
     my $new_self = $self->_clone;
     $new_self->{with} = %with ? {%with} : undef;
