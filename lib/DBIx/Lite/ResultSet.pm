@@ -93,7 +93,7 @@ sub select {
 
 sub select_also {
     my $self = shift;
-    return $self->select(@{$self->{select} // []}, @_);
+    return $self->select(@{$self->{select} // [$self->{table_alias} . '.*']}, @_);
 }
 
 sub with {
